@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: $font-family;
+  }
+
+
+  .content {
+    width: $content-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  @include media-tablet {
+    .content {
+      margin-left: $content-offset-tablet;
+      margin-right: $content-offset-tablet;
+      max-width: calc( 100% - #{$content-offset-tablet *2} );
+    }
+  }

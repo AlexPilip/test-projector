@@ -1,0 +1,177 @@
+.cards__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 18px;
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: auto;
+        cursor: pointer;
+
+        .top__container {
+            display: flex;
+            flex-direction: column;
+            color: $primary-dark;
+            font-size: 14px;
+
+            .image__wrapper {
+                position: relative;
+                &::before {
+                    content:'';
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    width: 24px;
+                    height: 24px;
+                    background: black;
+                    background-image: url(../images/icon-image.svg);
+                    border-radius: 4px;
+                }
+
+                .card-retina-image,
+                .card-image {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 8px;
+                }
+
+                .card-retina-image {
+                    display: none;
+                }
+            }
+    
+            
+            .title-song {
+                margin-top: 8px;
+                font-weight: 700;
+            }
+
+            .title-band {
+                font-weight: 500;
+            }
+            
+            .title-country,
+            .title-style,
+            .title-year {
+                display: flex;
+                justify-content: flex-start;
+                margin-top: 3px;
+
+                .sub-title {
+                    color:$primary-grey;
+                }    
+            }
+
+            .title-year { 
+                margin-top: 7px;
+            }
+        }
+
+        .card-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: $font-family;
+            color: $primary-white;
+            font-size: 16px;
+            font-weight: 500;
+            background-color: $button-color;
+            border: none;
+            border-radius: 4px;
+            padding: 11px 0 13px 0;
+            margin-top: 11px;
+            cursor: pointer;
+
+            .button-text {
+                width: fit-content;
+                position: relative;
+
+                &:first-child {
+                    display: none;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    top:50%;
+                    right: -22px;
+                    transform:translate(0, -50%);
+                    background-image: url(../images/icon-button.svg);
+                }
+
+            }
+        }
+
+        &.add-collection {
+            .card-button {     
+                .button-text {
+                    width: fit-content;
+                    position: relative;
+
+                    &:first-child {
+                        display: block;
+                        &:after {
+                            display: none;
+                        }
+                    }
+                
+                    &:last-child {
+                        display: none;
+                    }
+
+                }
+            }
+        }
+
+        &:hover {
+            .card-button {
+                background-color: $hover-color;
+            }
+        }
+
+        &:active {
+            .card-button {
+                opacity: 0.5;
+            }
+        }
+    }
+}
+
+
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) { 
+    .cards__container {
+        .card {  
+            .top__container { 
+                .image__wrapper {
+                    .card-image {
+                        display: none;
+                    }
+    
+                    .card-retina-image {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-tablet {
+    .cards__container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@include media-mobile {
+    .cards__container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
